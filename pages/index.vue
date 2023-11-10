@@ -1,7 +1,32 @@
+<!-- <script setup lang="ts">
+definePageMeta({
+  layout: false,
+})
+// const layout = "mainNav";
+</script>
+
 <template>
   <div>
-    <slot />
-    <img src="https://picsum.photos/200/300?random=1">
-    <img src="https://picsum.photos/200/300?random=2">
+    <NuxtLayout name="mainNav">
+      <template #frontPage> Some header template content.</template>
+
+      The rest of the page
+    </NuxtLayout>
+  </div>
+</template> -->
+
+<script setup lang="ts">
+definePageMeta({
+  layout: false,
+})
+</script>
+
+<template>
+  <div>
+    <NuxtLayout name="custom">
+      <template #header> Some header template content. </template>
+
+      The rest of the page
+    </NuxtLayout>
   </div>
 </template>
