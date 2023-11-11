@@ -1,32 +1,12 @@
-<!-- <script setup lang="ts">
-definePageMeta({
-  layout: false,
-})
-// const layout = "mainNav";
-</script>
-
-<template>
-  <div>
-    <NuxtLayout name="mainNav">
-      <template #frontPage> Some header template content.</template>
-
-      The rest of the page
-    </NuxtLayout>
-  </div>
-</template> -->
-
 <script setup lang="ts">
 definePageMeta({
-  layout: false,
+  layout: 'main-nav',
 })
 </script>
 
 <template>
-  <div>
-    <NuxtLayout name="custom">
-      <template #header> Some header template content. </template>
+  
+  front Page <br>
+  pengenalan web page galeri gambar
 
-      The rest of the page
-    </NuxtLayout>
-  </div>
 </template>
