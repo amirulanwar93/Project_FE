@@ -38,7 +38,7 @@
       </div>
       <div class="max-w-screen-xl flex justify-center">
         <ul class="">
-          <li class="border flex justify-center border-black rounded-lg container mx-auto p-auto p-4">
+          <li class="border flex justify-center border-black rounded-lg container my-4 p-4">
             <a href="./albums/albumMain" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
               <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="https://picsum.photos/200?random=1" alt="">
               <div class="flex flex-col justify-between p-4 leading-normal text-gray-900 dark:text-white tracking-tight">
@@ -50,11 +50,41 @@
               </div>
             </a>
           </li>
-          <li>
-            Senarai Album
+          <li class="border flex justify-center border-black rounded-lg container my-4 p-4">
+            <a href="./albums/albumMain" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+              <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="https://picsum.photos/200?random=2" alt="">
+              <div class="flex flex-col justify-between p-4 leading-normal text-gray-900 dark:text-white tracking-tight">
+                <div class="flex">
+                  <h5 class="mb-2 text-2xl font-bold">Nama Album</h5>
+                  <p class="mb-2 text-xl">10 Gambar</p>
+                </div>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Penerangan ringkas tentang album seperti lawatan atau sambutan, dsb.</p>
+              </div>
+            </a>
           </li>
-          <li>
-            Senarai Album
+          <li class="border flex justify-center border-black rounded-lg container my-4 p-4">
+            <a href="./albums/albumMain" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+              <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="https://picsum.photos/200?random=3" alt="">
+              <div class="flex flex-col justify-between p-4 leading-normal text-gray-900 dark:text-white tracking-tight">
+                <div class="flex">
+                  <h5 class="mb-2 text-2xl font-bold">Nama Album</h5>
+                  <p class="mb-2 text-xl">10 Gambar</p>
+                </div>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Penerangan ringkas tentang album seperti lawatan atau sambutan, dsb.</p>
+              </div>
+            </a>
+          </li>
+          <li class="border flex justify-center border-black rounded-lg container my-4 p-4">
+            <a href="./albums/albumMain" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+              <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="https://picsum.photos/200?random=4" alt="">
+              <div class="flex flex-col justify-between p-4 leading-normal text-gray-900 dark:text-white tracking-tight">
+                <div class="flex">
+                  <h5 class="mb-2 text-2xl font-bold">Nama Album</h5>
+                  <p class="mb-2 text-xl">10 Gambar</p>
+                </div>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Penerangan ringkas tentang album seperti lawatan atau sambutan, dsb.</p>
+              </div>
+            </a>
           </li>
         </ul>
       </div>
