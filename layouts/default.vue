@@ -1,15 +1,25 @@
 <template>
-  <nav class="bg-white border-gray-200 dark:bg-gray-900">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+  <nav class="border-gray-200 bg-white dark:bg-gray-900">
+    <div
+      class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4"
+    >
       <div class="flex items-center">
-        <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" />
-        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Galeri Gambar</span>
+        <img
+          src="https://flowbite.com/docs/images/logo.svg"
+          class="mr-3 h-8"
+          alt="Flowbite Logo"
+        />
+        <span
+          class="self-center whitespace-nowrap text-2xl font-semibold dark:text-white"
+          >Galeri Gambar</span
+        >
       </div>
       <div class="flex md:order-2">
-        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-          <a href="./">
-            Logout
-          </a>
+        <button
+          type="button"
+          class="mr-3 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:mr-0"
+        >
+          <a href="./"> Logout </a>
         </button>
       </div>
     </div>

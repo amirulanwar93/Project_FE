@@ -1,3 +1,1 @@
-<template>
-  edit album
-</template>
+<template>edit album</template>

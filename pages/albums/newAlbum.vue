@@ -1,3 +1,1 @@
-<template>
-  new album
-</template>
+<template>new album</template>

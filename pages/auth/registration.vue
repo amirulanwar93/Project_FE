@@ -1,3 +1,1 @@
-<template>
-  Registration page
-</template>
+<template>Registration page</template>

@@ -1,12 +1,10 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: 'main-nav',
-})
+  layout: "main-nav",
+});
 </script>
 
 <template>
-  
-  front Page <br>
+  front Page <br />
   pengenalan web page galeri gambar
-
 </template>

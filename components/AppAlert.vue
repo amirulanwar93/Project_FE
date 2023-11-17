@@ -1,5 +1,3 @@
 <template>
-  <span>
-    Hello, <slot />!
-  </span>
+  <span> Hello, <slot />! </span>
 </template>
