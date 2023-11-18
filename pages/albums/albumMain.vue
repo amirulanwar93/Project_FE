@@ -1,5 +1,19 @@
 <template>
   <main class="mx-auto max-w-screen-xl items-center justify-between p-4">
+    <div class="flex justify-between">
+      <div class="flex">
+        <button>arrow back</button>
+        <div>
+          <h1>Nama Album</h1>
+          <p>penerangan ringkas</p>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <button>edit album</button>
+        <button>hapus</button>
+      </div>
+    </div>
+
     <div class="grid grid-cols-2 gap-4 md:grid-cols-5">
       <div>
         <img
@@ -234,6 +248,5 @@
         </ul>
       </nav>
     </div>
-
   </main>
 </template>
