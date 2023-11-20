@@ -1,5 +1,8 @@
 <template>
   <main class="mx-auto max-w-screen-xl items-center justify-between p-4">
+    <div class="mb-6 text-2xl">
+      <h1>Album Baru</h1>
+    </div>
     <div class="mb-6">
       <label
         for="base-input"
