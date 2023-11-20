@@ -8,7 +8,7 @@
         >
           <a href="#"> back button </a>
         </button>
-        <div class=" m-4">
+        <div class="m-4">
           <h1>Nama Album</h1>
           <p>penerangan ringkas</p>
         </div>
@@ -16,9 +16,9 @@
       <div class="flex flex-col justify-evenly">
         <button
           type="button"
-          class="mr-3 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:mr-0 "
+          class="mr-3 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:mr-0"
         >
-          <a href="./editAlbum" > Edit Album </a>
+          <a href="./editAlbum"> Edit Album </a>
         </button>
         <button
           type="button"
