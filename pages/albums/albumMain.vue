@@ -33,175 +33,175 @@
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
+          src="https://picsum.photos/200?random=1"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+          src="https://picsum.photos/200?random=2"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg"
+          src="https://picsum.photos/200?random=3"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg"
+          src="https://picsum.photos/200?random=4"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg"
+          src="https://picsum.photos/200?random=5"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg"
+          src="https://picsum.photos/200?random=6"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-6.jpg"
+          src="https://picsum.photos/200?random=7"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-7.jpg"
+          src="https://picsum.photos/200?random=8"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-8.jpg"
+          src="https://picsum.photos/200?random=9"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-9.jpg"
+          src="https://picsum.photos/200?random=10"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-10.jpg"
+          src="https://picsum.photos/200?random=11"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-11.jpg"
+          src="https://picsum.photos/200?random=12"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
+          src="https://picsum.photos/200?random=13"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+          src="https://picsum.photos/200?random=14"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg"
+          src="https://picsum.photos/200?random=15"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg"
+          src="https://picsum.photos/200?random=16"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg"
+          src="https://picsum.photos/200?random=17"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg"
+          src="https://picsum.photos/200?random=18"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-6.jpg"
+          src="https://picsum.photos/200?random=19"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-7.jpg"
+          src="https://picsum.photos/200?random=20"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-8.jpg"
+          src="https://picsum.photos/200?random=21"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-9.jpg"
+          src="https://picsum.photos/200?random=22"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-10.jpg"
+          src="https://picsum.photos/200?random=23"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-11.jpg"
+          src="https://picsum.photos/200?random=24"
           alt=""
         />
       </div>
       <div>
         <img
           class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-11.jpg"
+          src="https://picsum.photos/200?random=25"
           alt=""
         />
       </div>

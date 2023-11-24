@@ -5,8 +5,8 @@
     >
       <div class="flex items-center">
         <img
-          src="https://flowbite.com/docs/images/logo.svg"
-          class="mr-3 h-8"
+          src="../public/logo.png"
+          class="mr-3 h-8 rounded"
           alt="Flowbite Logo"
         />
         <span

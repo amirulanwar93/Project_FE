@@ -7,35 +7,35 @@
         <div>
           <img
             class="h-auto max-w-full rounded-lg"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
+            src="https://picsum.photos/200?random=1"
             alt=""
           />
         </div>
         <div>
           <img
             class="h-auto max-w-full rounded-lg"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+            src="https://picsum.photos/200?random=2"
             alt=""
           />
         </div>
         <div>
           <img
             class="h-auto max-w-full rounded-lg"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg"
+            src="https://picsum.photos/200?random=3"
             alt=""
           />
         </div>
         <div>
           <img
             class="h-auto max-w-full rounded-lg"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg"
+            src="https://picsum.photos/200?random=4"
             alt=""
           />
         </div>
         <div>
           <img
             class="h-auto max-w-full rounded-lg"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg"
+            src="https://picsum.photos/200?random=5"
             alt=""
           />
         </div>
@@ -67,7 +67,7 @@
             >
               <img
                 class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
-                src="https://picsum.photos/200?random=1"
+                src="https://picsum.photos/200?random=6"
                 alt=""
               />
               <div
@@ -93,7 +93,7 @@
             >
               <img
                 class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
-                src="https://picsum.photos/200?random=2"
+                src="https://picsum.photos/200?random=7"
                 alt=""
               />
               <div
@@ -119,7 +119,7 @@
             >
               <img
                 class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
-                src="https://picsum.photos/200?random=3"
+                src="https://picsum.photos/200?random=8"
                 alt=""
               />
               <div
@@ -145,7 +145,7 @@
             >
               <img
                 class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
-                src="https://picsum.photos/200?random=4"
+                src="https://picsum.photos/200?random=9"
                 alt=""
               />
               <div
