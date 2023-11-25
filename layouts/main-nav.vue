@@ -5,7 +5,7 @@
     >
       <div class="flex items-center">
         <img
-          src="../public/logo.png"
+          src="../public/img/logo.png"
           class="mr-3 h-8 rounded"
           alt="Flowbite Logo"
         />
