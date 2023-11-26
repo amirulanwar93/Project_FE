@@ -15,7 +15,7 @@ console.log(route.params.album_id);
 
 const config = useRuntimeConfig();
 
-const updateAlbum = () => {
+const listingAlbum = () => {
   nextTick(async () => {
     const { data, pending, error, refresh } = await useFetch(
       `${config.public.apiBase}/albums/show/${route.params.album_id}`,
@@ -40,7 +40,7 @@ const updateAlbum = () => {
     );
   });
 };
-const updatePicture = () => {
+const listingPicture = () => {
   nextTick(async () => {
     const { data, pending, error, refresh } = await useFetch(
       `${config.public.apiBase}/albums/${route.params.album_id}/pictures/listing`,
@@ -66,8 +66,8 @@ const updatePicture = () => {
   });
 };
 onMounted(() => {
-  updateAlbum();
-  updatePicture();
+  listingAlbum();
+  listingPicture();
 });
 </script>
 

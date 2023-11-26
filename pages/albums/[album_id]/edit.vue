@@ -1,3 +1,19 @@
+<script setup lang="ts">
+
+definePageMeta({
+  middleware: "auth",
+  
+});
+
+const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+
+const albumNew = () => {
+  
+}
+
+
+</script>
+
 <template>
   <main class="mx-auto max-w-screen-xl items-center justify-between p-4">
     <div class="mb-6">

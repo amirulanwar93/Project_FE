@@ -12,7 +12,7 @@ let albums = ref([])
 
 const config = useRuntimeConfig();
 
-const updateData = () => {
+const albumListing = () => {
 
   nextTick(async () => {
     const { data, pending, error, refresh } = await useFetch(`${config.public.apiBase}/albums/listing`, {
@@ -40,7 +40,7 @@ const updateData = () => {
 };
 
 onMounted(() => {
-  updateData()
+  albumListing()
 });
 
 </script>
@@ -99,7 +99,7 @@ onMounted(() => {
             type="button"
             class="rounded-lg border border-blue-700 px-5 py-2.5 text-center text-sm font-medium text-blue-700 hover:bg-blue-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-blue-500 dark:text-blue-500 dark:hover:bg-blue-500 dark:hover:text-white dark:focus:ring-blue-800"
           >
-            <a href="/albums/newAlbum">Album Baru</a>
+            <a href="#" @click.stop.prevent="navigateTo('/albums/new')">Album Baru</a>
           </button>
         </div>
       </div>
