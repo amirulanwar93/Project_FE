@@ -1,3 +1,45 @@
+<script setup lang="ts">
+import { callWithNuxt } from "nuxt/app";
+
+const form = ref({
+  email: "",
+  password: "",
+});
+
+const config = useRuntimeConfig();
+
+const login = async () => {
+  return await callWithNuxt(
+    useNuxtApp(),
+    async () =>
+      await useFetch(`${config.public.apiBase}/login`, {
+        method: "post",
+        body: form,
+        onResponse({ request, response, options }) {
+          console.log(response._data.data.token);
+          // Process the response data
+
+          localStorage.setItem("token", response._data.data.token);
+
+          const token =
+            typeof window !== "undefined"
+              ? localStorage.getItem("token")
+              : null;
+          console.log(token);
+
+          navigateTo("/albums");
+
+          // window.$cookies.set('token', response._data.data.token);
+        },
+        onResponseError({ request, response, options }) {
+          // console.log(response);
+          // Handle the response errors
+        },
+      }),
+  );
+};
+</script>
+
 <template>
   <main
     class="mx-auto flex max-w-screen-xl flex-col items-center justify-between p-4"
@@ -16,6 +58,7 @@
             >Your email</label
           >
           <input
+            v-model="form.email"
             type="email"
             name="email"
             id="email"
@@ -31,6 +74,7 @@
             >Your password</label
           >
           <input
+            v-model="form.password"
             type="password"
             name="password"
             id="password"
@@ -64,6 +108,7 @@
         </div>
         <button
           type="submit"
+          @click.stop.prevent="login"
           class="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Login to your account

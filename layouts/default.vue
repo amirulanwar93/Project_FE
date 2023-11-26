@@ -1,3 +1,13 @@
+<script setup lang="ts">
+const logout = () => {
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("token");
+
+    navigateTo("/auth/login");
+  }
+};
+</script>
+
 <template>
   <nav class="border-gray-200 bg-white dark:bg-gray-900">
     <div
@@ -5,7 +15,7 @@
     >
       <div class="flex items-center">
         <img
-          src="../public/img/logo.png"
+          src="/img/logo.png"
           class="mr-3 h-8 rounded"
           alt="Flowbite Logo"
         />
@@ -16,10 +26,11 @@
       </div>
       <div class="flex md:order-2">
         <button
+          @click.stop.prevent="logout"
           type="button"
           class="mr-3 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:mr-0"
         >
-          <a href="./"> Logout </a>
+          <span> Logout </span>
         </button>
       </div>
     </div>

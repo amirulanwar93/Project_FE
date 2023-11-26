@@ -1,3 +1,50 @@
+<script setup lang="ts">
+
+definePageMeta({
+  middleware: "auth",
+  
+});
+
+const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+
+
+let albums = ref([])
+
+const config = useRuntimeConfig();
+
+const updateData = () => {
+
+  nextTick(async () => {
+    const { data, pending, error, refresh } = await useFetch(`${config.public.apiBase}/albums/listing`, {
+      method: "get",
+
+      headers: {
+
+        Authorization: `Bearer ${token}`,
+      },
+      onResponse({ request, response, options }) {
+        console.log(response);
+        // Process the response data
+
+        albums.value = response._data.data;
+        // window.$cookies.set('token', response._data.data.token);
+
+      },
+      onResponseError({ request, response, options }) {
+        console.log(response);
+        // Handle the response errors
+      }
+    });
+  });
+
+};
+
+onMounted(() => {
+  updateData()
+});
+
+</script>
+
 <template>
   <main class="mx-auto max-w-screen-xl items-center justify-between p-4">
     <div>
@@ -58,106 +105,27 @@
       </div>
       <div class="flex max-w-screen-xl justify-center">
         <ul class="">
-          <li
+          <li v-for="album in albums"
             class="container my-4 flex justify-center rounded-lg border border-black p-4"
           >
             <a
-              href="./albums/albumMain"
+              :href="'/albums/'+album.id"
               class="flex flex-col items-center rounded-lg border border-gray-200 bg-white shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 md:max-w-xl md:flex-row"
             >
               <img
                 class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
-                src="https://picsum.photos/200?random=6"
+                :src="config.public.apiBase+'/'+album.imageUrl"
                 alt=""
               />
               <div
                 class="flex flex-col justify-between p-4 leading-normal tracking-tight text-gray-900 dark:text-white"
               >
                 <div class="flex">
-                  <h5 class="mb-2 text-2xl font-bold">Nama Album</h5>
-                  <p class="mb-2 text-xl">10 Gambar</p>
+                  <h5 class="mb-2 text-2xl font-bold">{{ album.albumsName }}</h5>
+                  <!-- <p class="mb-2 text-xl">10 Gambar</p> -->
                 </div>
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  Penerangan ringkas tentang album seperti lawatan atau
-                  sambutan, dsb.
-                </p>
-              </div>
-            </a>
-          </li>
-          <li
-            class="container my-4 flex justify-center rounded-lg border border-black p-4"
-          >
-            <a
-              href="./albums/albumMain"
-              class="flex flex-col items-center rounded-lg border border-gray-200 bg-white shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 md:max-w-xl md:flex-row"
-            >
-              <img
-                class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
-                src="https://picsum.photos/200?random=7"
-                alt=""
-              />
-              <div
-                class="flex flex-col justify-between p-4 leading-normal tracking-tight text-gray-900 dark:text-white"
-              >
-                <div class="flex">
-                  <h5 class="mb-2 text-2xl font-bold">Nama Album</h5>
-                  <p class="mb-2 text-xl">10 Gambar</p>
-                </div>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  Penerangan ringkas tentang album seperti lawatan atau
-                  sambutan, dsb.
-                </p>
-              </div>
-            </a>
-          </li>
-          <li
-            class="container my-4 flex justify-center rounded-lg border border-black p-4"
-          >
-            <a
-              href="./albums/albumMain"
-              class="flex flex-col items-center rounded-lg border border-gray-200 bg-white shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 md:max-w-xl md:flex-row"
-            >
-              <img
-                class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
-                src="https://picsum.photos/200?random=8"
-                alt=""
-              />
-              <div
-                class="flex flex-col justify-between p-4 leading-normal tracking-tight text-gray-900 dark:text-white"
-              >
-                <div class="flex">
-                  <h5 class="mb-2 text-2xl font-bold">Nama Album</h5>
-                  <p class="mb-2 text-xl">10 Gambar</p>
-                </div>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  Penerangan ringkas tentang album seperti lawatan atau
-                  sambutan, dsb.
-                </p>
-              </div>
-            </a>
-          </li>
-          <li
-            class="container my-4 flex justify-center rounded-lg border border-black p-4"
-          >
-            <a
-              href="./albums/albumMain"
-              class="flex flex-col items-center rounded-lg border border-gray-200 bg-white shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 md:max-w-xl md:flex-row"
-            >
-              <img
-                class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
-                src="https://picsum.photos/200?random=9"
-                alt=""
-              />
-              <div
-                class="flex flex-col justify-between p-4 leading-normal tracking-tight text-gray-900 dark:text-white"
-              >
-                <div class="flex">
-                  <h5 class="mb-2 text-2xl font-bold">Nama Album</h5>
-                  <p class="mb-2 text-xl">10 Gambar</p>
-                </div>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  Penerangan ringkas tentang album seperti lawatan atau
-                  sambutan, dsb.
+                  {{ album.albumsDescription }}
                 </p>
               </div>
             </a>
