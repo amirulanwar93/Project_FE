@@ -1,17 +1,12 @@
 <script setup lang="ts">
-
 definePageMeta({
   middleware: "auth",
-  
 });
 
-const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+const token =
+  typeof window !== "undefined" ? localStorage.getItem("token") : null;
 
-const albumNew = () => {
-  
-}
-
-
+const albumNew = () => {};
 </script>
 
 <template>

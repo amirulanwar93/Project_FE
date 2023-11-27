@@ -4,11 +4,7 @@
       class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4"
     >
       <div class="flex items-center">
-        <img
-          src="/img/logo.png"
-          class="mr-3 h-8 rounded"
-          alt="Flowbite Logo"
-        />
+        <img src="/img/logo.png" class="mr-3 h-8 rounded" alt="Flowbite Logo" />
         <span
           class="self-center whitespace-nowrap text-2xl font-semibold dark:text-white"
           >Galeri Gambar</span
