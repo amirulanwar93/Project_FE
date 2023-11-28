@@ -11,13 +11,11 @@ const form = ref({
   penerangan: "",
   file: "",
 });
-console.log(form.file);
 
 // Bila file input onchange, assign the value into form
 const onChange = async (e) => {
-  form.file = e.target.files;
+  form.value.file = e.target.files[0];
 };
-console.log(form.file);
 
 const config = useRuntimeConfig();
 
@@ -35,10 +33,9 @@ const config = useRuntimeConfig();
 
 const newAlbum = async () => {
   const formData = new FormData();
-  formData.append("name", form.name);
-  formData.append("penerangan", form.penerangan);
-  formData.append("file", form.file);
-  console.log(formData);
+  formData.append("albumsName", form.value.name);
+  formData.append("albumsDescription", form.value.penerangan);
+  formData.append("file", form.value.file);
 
   return await callWithNuxt(
     useNuxtApp(),
@@ -107,6 +104,7 @@ const newAlbum = async () => {
       aria-describedby="user_avatar_help"
       id="user_avatar"
       type="file"
+      @change="onChange"
     />
     <div class="flex md:order-2">
       <button
