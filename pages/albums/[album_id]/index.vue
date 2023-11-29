@@ -133,6 +133,32 @@ const deleteAlbum = () => {
   });
 };
 
+const deletePicture = () => {
+
+
+  nextTick(async () => {
+    const { data, pending, error, refresh } = await useFetch(
+      `${config.public.apiBase}/albums/${route.params.album_id}/pictures/delete/${route.params.id}`,
+      {
+        method: "delete",
+
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        onResponse({ request, response, options }) {
+          console.log(response);
+
+          // reloadNuxtApp();
+        },
+        onResponseError({ request, response, options }) {
+          console.log(response);
+          // Handle the response errors
+        },
+      },
+    );
+  });
+};
+
 onMounted(() => {
   listingAlbum();
   listingPicture();
@@ -212,47 +238,35 @@ onMounted(() => {
 
     <div class="grid grid-cols-2 gap-4 md:grid-cols-5">
       <div class="relative flex">
-        <svg
-          class="absolute right-0 top-0 h-6 w-6 rounded-full bg-white text-gray-800"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 14 14"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-          />
-        </svg>
         <img
-          class="h-auto max-w-full rounded-lg"
+          class="h-auto max-w-full cursor-pointer rounded-lg"
           :src="config.public.apiBase + '/' + album.imageUrl"
           alt=""
         />
       </div>
 
       <div v-for="picture in pictures" class="relative flex">
-        <svg
-          class="absolute right-0 top-0 h-6 max-w-full rounded-full bg-white text-gray-800"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 14 14"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-          />
-          <a href="#"></a>
-        </svg>
+        <button>
+          <a href="#" @click.stop.prevent="deletePicture">
+            <svg
+              class="absolute right-0 top-0 h-6 max-w-full cursor-pointer rounded-full bg-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 14 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+              />
+            </svg>
+          </a>
+        </button>
         <img
-          class="h-auto max-w-full rounded-lg object-contain"
+          class="h-auto max-w-full cursor-pointer rounded-lg"
           :src="config.public.apiBase + '/' + picture.imageUrl"
           alt=""
         />
