@@ -133,12 +133,12 @@ const deleteAlbum = () => {
   });
 };
 
-const deletePicture = () => {
+const deletePicture = (picture_id: string) => {
 
 
   nextTick(async () => {
     const { data, pending, error, refresh } = await useFetch(
-      `${config.public.apiBase}/albums/${route.params.album_id}/pictures/delete/${route.params.id}`,
+      `${config.public.apiBase}/albums/${route.params.album_id}/pictures/delete/${picture_id}`,
       {
         method: "delete",
 
@@ -148,7 +148,7 @@ const deletePicture = () => {
         onResponse({ request, response, options }) {
           console.log(response);
 
-          // reloadNuxtApp();
+          reloadNuxtApp();
         },
         onResponseError({ request, response, options }) {
           console.log(response);
@@ -247,7 +247,7 @@ onMounted(() => {
 
       <div v-for="picture in pictures" class="relative flex">
         <button>
-          <a href="#" @click.stop.prevent="deletePicture">
+          <a href="#" @click.stop.prevent="deletePicture(picture.id)">
             <svg
               class="absolute right-0 top-0 h-6 max-w-full cursor-pointer rounded-full bg-white"
               aria-hidden="true"

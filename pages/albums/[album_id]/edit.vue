@@ -13,7 +13,7 @@ const route = useRoute();
 // Tambah field file baru
 const form = ref({
   name: "",
-  penerangan: "",
+  description: "",
   file: "",
 });
 
@@ -26,13 +26,43 @@ const config = useRuntimeConfig();
 
 const album = ref([]);
 
+const showAlbum = async () => {
+  // Call show album API
+  nextTick(async () => {
+    const { data, pending, error, refresh } = await useFetch(
+      `${config.public.apiBase}/albums/show/${route.params.album_id}`,
+      {
+        method: "get",
+
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        onResponse({ request, response, options }) {
+          console.log(response);
+          // Process the response data
+
+          form.value = response._data.data;
+          // window.$cookies.set('token', response._data.data.token);
+        },
+        onResponseError({ request, response, options }) {
+          console.log(response);
+          // Handle the response errors
+        },
+      },
+    );
+  });
+  // Assign value
+
+}
+
 // Masa nak submit form, guna formData.append() untuk populate data
 const editAlbum = async () => {
   const formData = new FormData();
   formData.append("albumsName", form.value.name);
-  formData.append("albumsDescription", form.value.penerangan);
+  formData.append("albumsDescription", form.value.description);
   formData.append("file", form.value.file);
 
+  
   return await callWithNuxt(
     useNuxtApp(),
     async () =>
@@ -48,7 +78,8 @@ const editAlbum = async () => {
             console.log(response);
             // Process the response data
 
-            album.value = response._data.data;
+            navigateTo(`/albums/${route.params.album_id}`)
+            // album.value = response._data.data;
 
             // window.$cookies.set('token', response._data.data.token);
           },
@@ -62,7 +93,7 @@ const editAlbum = async () => {
 };
 
 onMounted(() => {
-  editAlbum();
+  showAlbum();
 });
 </script>
 
@@ -89,7 +120,7 @@ onMounted(() => {
         >Penerangan</label
       >
       <input
-        v-model="form.penerangan"
+        v-model="form.description"
         type="text"
         id="base-input"
         class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
@@ -109,12 +140,13 @@ onMounted(() => {
       @change="onChange"
     />
 
+
     <div class="flex md:order-2">
       <button
         type="button"
         class="my-2.5 mr-3 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:mr-0"
       >
-        <a href="'/albums/' + album.id" @click.stop.prevent="editAlbum">
+        <a href="#" @click.stop.prevent="editAlbum">
           Simpan
         </a>
       </button>
