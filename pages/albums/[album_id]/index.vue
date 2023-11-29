@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { callWithNuxt } from "nuxt/app";
+
 definePageMeta({
   middleware: "auth",
 });
@@ -40,6 +42,7 @@ const listingAlbum = () => {
     );
   });
 };
+
 const listingPicture = () => {
   nextTick(async () => {
     const { data, pending, error, refresh } = await useFetch(
@@ -65,6 +68,71 @@ const listingPicture = () => {
     );
   });
 };
+
+// Tambah field file baru
+const form = ref({
+  file: "",
+});
+
+// Bila file input onchange, assign the value into form
+const onChange = async (e) => {
+  form.value.file = e.target.files[0];
+};
+
+// Masa nak submit form, guna formData.append() untuk populate data
+const uploadPicture = async () => {
+  const formData = new FormData();
+  formData.append("file", form.value.file);
+
+  return await callWithNuxt(
+    useNuxtApp(),
+    async () =>
+      await useFetch(
+        `${config.public.apiBase}/albums/${route.params.album_id}/pictures/upload`,
+        {
+          method: "post",
+          body: formData,
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          onResponse({ request, response, options }) {
+            console.log(response);
+            // Process the response data
+            reloadNuxtApp();
+          },
+          onResponseError({ request, response, options }) {
+            console.log(response);
+            // Handle the response errors
+          },
+        },
+      ),
+  );
+};
+
+const deleteAlbum = () => {
+  nextTick(async () => {
+    const { data, pending, error, refresh } = await useFetch(
+      `${config.public.apiBase}/albums/delete/${route.params.album_id}`,
+      {
+        method: "delete",
+
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        onResponse({ request, response, options }) {
+          console.log(response);
+          // Navigate to Albums
+          navigateTo("/albums");
+        },
+        onResponseError({ request, response, options }) {
+          console.log(response);
+          // Handle the response errors
+        },
+      },
+    );
+  });
+};
+
 onMounted(() => {
   listingAlbum();
   listingPicture();
@@ -79,7 +147,23 @@ onMounted(() => {
           type="button"
           class="mr-3 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 md:mr-0"
         >
-          <a href="#"> back button </a>
+          <a href="#" @click.stop.prevent="navigateTo('/albums')">
+            <svg
+              class="h-6 w-6 text-gray-800 dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 14 10"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 5H1m0 0 4 4M1 5l4-4"
+              />
+            </svg>
+          </a>
         </button>
         <div class="m-4">
           <h1>{{ album.name }}</h1>
@@ -95,6 +179,7 @@ onMounted(() => {
                 class="my-2.5 block w-full cursor-pointer rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:placeholder-gray-400"
                 aria-describedby="user_avatar_help"
                 id="user_avatar"
+                @change="onChange"
                 type="file"
               />
             </div>
@@ -103,9 +188,7 @@ onMounted(() => {
                 type="button"
                 class="mr-3 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:mr-0"
               >
-                <a href="#" @change="onChange" @click.stop.prevent="newAlbum">
-                  Simpan
-                </a>
+                <a href="#" @click.stop.prevent="uploadPicture"> Simpan </a>
               </button>
             </div>
           </div>
@@ -116,89 +199,64 @@ onMounted(() => {
           type="button"
           class="mr-3 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:mr-0"
         >
-          <a href="./editAlbum"> Edit Album </a>
+          <a :href="'/albums/' + album.id + '/edit'"> Edit Album </a>
         </button>
         <button
           type="button"
           class="mr-3 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:mr-0"
         >
-          <a href="#"> Delete Album </a>
+          <a href="#" @click.stop.prevent="deleteAlbum"> Delete Album </a>
         </button>
       </div>
     </div>
 
     <div class="grid grid-cols-2 gap-4 md:grid-cols-5">
-      <div>
+      <div class="relative flex">
+        <svg
+          class="absolute right-0 top-0 h-6 w-6 rounded-full bg-white text-gray-800"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 14 14"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+          />
+        </svg>
         <img
           class="h-auto max-w-full rounded-lg"
           :src="config.public.apiBase + '/' + album.imageUrl"
           alt=""
         />
       </div>
-      <div v-for="picture in pictures">
+
+      <div v-for="picture in pictures" class="relative flex">
+        <svg
+          class="absolute right-0 top-0 h-6 max-w-full rounded-full bg-white text-gray-800"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 14 14"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+          />
+          <a href="#"></a>
+        </svg>
         <img
-          class="h-auto max-w-full rounded-lg"
+          class="h-auto max-w-full rounded-lg object-contain"
           :src="config.public.apiBase + '/' + picture.imageUrl"
           alt=""
         />
       </div>
-    </div>
-
-    <div class="flex justify-center py-4">
-      <nav aria-label="Page navigation example">
-        <ul class="inline-flex -space-x-px text-sm">
-          <li>
-            <a
-              href="#"
-              class="ms-0 flex h-8 items-center justify-center rounded-s-lg border border-e-0 border-gray-300 bg-white px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >Previous</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="flex h-8 items-center justify-center border border-gray-300 bg-white px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >1</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="flex h-8 items-center justify-center border border-gray-300 bg-white px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >2</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              aria-current="page"
-              class="flex h-8 items-center justify-center border border-gray-300 bg-blue-50 px-3 text-blue-600 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-              >3</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="flex h-8 items-center justify-center border border-gray-300 bg-white px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >4</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="flex h-8 items-center justify-center border border-gray-300 bg-white px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >5</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="flex h-8 items-center justify-center rounded-e-lg border border-gray-300 bg-white px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >Next</a
-            >
-          </li>
-        </ul>
-      </nav>
     </div>
   </main>
 </template>

@@ -20,17 +20,6 @@ const onChange = async (e) => {
 const config = useRuntimeConfig();
 
 // Masa nak submit form, guna formData.append() untuk populate data
-// const submitForm = async () => {
-//   const formData = new FormData();
-//   formData.append('name', form.name);
-//   formData.append('penerangan', form.penerangan);
-//   formData.append('file', form.file);
-//   await useFetch('/api/upload', {
-//     method: 'post',
-//     body: formData,
-//   });
-// };
-
 const newAlbum = async () => {
   const formData = new FormData();
   formData.append("albumsName", form.value.name);
@@ -111,7 +100,7 @@ const newAlbum = async () => {
         type="button"
         class="mr-3 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:mr-0"
       >
-        <a href="#" @change="onChange" @click.stop.prevent="newAlbum">
+        <a href="#" @click.stop.prevent="newAlbum">
           Simpan
         </a>
       </button>

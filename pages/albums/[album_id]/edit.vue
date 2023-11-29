@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { callWithNuxt } from "nuxt/app";
+
 definePageMeta({
   middleware: "auth",
 });
@@ -6,7 +8,61 @@ definePageMeta({
 const token =
   typeof window !== "undefined" ? localStorage.getItem("token") : null;
 
-const albumNew = () => {};
+const route = useRoute();
+
+// Tambah field file baru
+const form = ref({
+  name: "",
+  penerangan: "",
+  file: "",
+});
+
+// Bila file input onchange, assign the value into form
+const onChange = async (e) => {
+  form.value.file = e.target.files[0];
+};
+
+const config = useRuntimeConfig();
+
+const album = ref([]);
+
+// Masa nak submit form, guna formData.append() untuk populate data
+const editAlbum = async () => {
+  const formData = new FormData();
+  formData.append("albumsName", form.value.name);
+  formData.append("albumsDescription", form.value.penerangan);
+  formData.append("file", form.value.file);
+
+  return await callWithNuxt(
+    useNuxtApp(),
+    async () =>
+      await useFetch(
+        `${config.public.apiBase}/albums/update/${route.params.album_id}`,
+        {
+          method: "put",
+          body: formData,
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          onResponse({ request, response, options }) {
+            console.log(response);
+            // Process the response data
+            album.value = response._data.data;
+
+            // window.$cookies.set('token', response._data.data.token);
+          },
+          onResponseError({ request, response, options }) {
+            console.log(response);
+            // Handle the response errors
+          },
+        },
+      ),
+  );
+};
+
+onMounted(() => {
+  editAlbum();
+});
 </script>
 
 <template>
@@ -15,9 +71,11 @@ const albumNew = () => {};
       <label
         for="base-input"
         class="mb-2 block text-sm font-medium text-gray-900"
-        >Nama Album</label
+      >
+        Nama Album</label
       >
       <input
+        v-model="form.name"
         type="text"
         id="base-input"
         class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
@@ -30,6 +88,7 @@ const albumNew = () => {};
         >Penerangan</label
       >
       <input
+        v-model="form.penerangan"
         type="text"
         id="base-input"
         class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
@@ -37,7 +96,7 @@ const albumNew = () => {};
     </div>
 
     <label
-      class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+      class="mb-2 block text-sm font-medium text-gray-900"
       for="user_avatar"
       >Upload file</label
     >
@@ -46,16 +105,17 @@ const albumNew = () => {};
       aria-describedby="user_avatar_help"
       id="user_avatar"
       type="file"
+      @change="onChange"
     />
-    <div class="mt-1 text-sm text-gray-500" id="user_avatar_help">
-      A profile picture is useful to confirm your are logged into your account
-    </div>
+
     <div class="flex md:order-2">
       <button
         type="button"
-        class="mr-3 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:mr-0"
+        class="my-2.5 mr-3 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:mr-0"
       >
-        <a href="#"> Simpan </a>
+        <a :href="'/albums/' + album.id" @click.stop.prevent="editAlbum">
+          Simpan
+        </a>
       </button>
     </div>
   </main>
