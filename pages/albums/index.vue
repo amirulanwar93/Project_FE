@@ -43,49 +43,7 @@ onMounted(() => {
 
 <template>
   <main class="mx-auto max-w-screen-xl items-center justify-between p-4">
-    <div>
-      <div class="py-4">Galeri Terkini</div>
-
-      <div class="grid grid-cols-2 justify-center gap-4 md:grid-cols-5 md:grid">
-        <div>
-          <img
-            class="h-auto max-w-full rounded-lg"
-            src="https://picsum.photos/200?random=1"
-            alt=""
-          />
-        </div>
-        <div>
-          <img
-            class="h-auto max-w-full rounded-lg"
-            src="https://picsum.photos/200?random=2"
-            alt=""
-          />
-        </div>
-        <div>
-          <img
-            class="h-auto max-w-full rounded-lg"
-            src="https://picsum.photos/200?random=3"
-            alt=""
-          />
-        </div>
-        <div>
-          <img
-            class="h-auto max-w-full rounded-lg"
-            src="https://picsum.photos/200?random=4"
-            alt=""
-          />
-        </div>
-        <div>
-          <img
-            class="h-auto max-w-full rounded-lg"
-            src="https://picsum.photos/200?random=5"
-            alt=""
-          />
-        </div>
-      </div>
-    </div>
-
-    <div class="mx-auto flex  max-w-screen-xl items-center justify-between py-4">
+    <div class="mx-auto flex max-w-screen-xl items-center justify-between py-4">
       <div>Album</div>
       <div class="flex flex-wrap items-center">
         <button
@@ -102,24 +60,8 @@ onMounted(() => {
     <ul class="">
       <li
         v-for="album in albums"
-        class=" relative flex my-4 justify-center rounded-lg border border-black p-4"
+        class="relative my-4 flex justify-center rounded-lg border border-black p-4"
       >
-        <svg
-          class="absolute right-0 top-0 h-6 max-w-full rounded-full border border-black bg-white text-gray-800"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 14 14"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-          />
-          <a href="#"></a>
-        </svg>
         <a
           :href="'/albums/' + album.id"
           class="flex flex-grow items-center rounded-lg border border-gray-200 bg-white shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 md:max-w-screen-xl md:flex-row"
@@ -136,7 +78,6 @@ onMounted(() => {
               <h5 class="mb-2 text-2xl font-bold">
                 {{ album.albumsName }}
               </h5>
-              <!-- <p class="mb-2 text-xl">10 Gambar</p> -->
             </div>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
               {{ album.albumsDescription }}

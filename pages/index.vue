@@ -15,8 +15,8 @@ definePageMeta({
       >
         <a href="./auth/registration"> Registration </a>
       </button>
-      front Page <br />
-      pengenalan web page galeri gambar
+      OVERVIEW<br />
+      Tempat untuk menimpan gambar-gambar
     </div>
   </main>
 </template>
