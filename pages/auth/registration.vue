@@ -25,7 +25,6 @@ const register = async () => {
           navigateTo("/auth/login");
         },
         onResponseError({ request, response, options }) {
-          // console.log(response);
           // Handle the response errors
         },
       }),
@@ -68,22 +67,6 @@ const register = async () => {
           >Password</label
         >
       </div>
-      <!-- <div class="group relative z-0 mb-6 w-full">
-        <input
-          type="password"
-          name="repeat_password"
-          id="floating_repeat_password"
-          class="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 "
-          placeholder=" "
-          required
-        />
-        <label
-          for="floating_repeat_password"
-          class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:start-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 rtl:peer-focus:translate-x-1/4 dark:text-gray-400 peer-focus:dark:text-blue-500"
-          >Confirm password</label
-        >
-      </div> -->
-      <!-- <div class="grid md:grid-cols-2 md:gap-6"> -->
       <div class="group relative z-0 mb-6 w-full">
         <input
           v-model="form.name"
@@ -100,22 +83,6 @@ const register = async () => {
           >Name</label
         >
       </div>
-      <!-- <div class="group relative z-0 mb-6 w-full">
-          <input
-            type="text"
-            name="floating_last_name"
-            id="floating_last_name"
-            class="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 "
-            placeholder=" "
-            required
-          />
-          <label
-            for="floating_last_name"
-            class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:start-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 rtl:peer-focus:translate-x-1/4 dark:text-gray-400 peer-focus:dark:text-blue-500"
-            >Last name</label
-          >
-        </div> -->
-      <!-- </div> -->
       <div class="grid md:grid-cols-2 md:gap-6">
         <div class="group relative z-0 mb-6 w-full">
           <input

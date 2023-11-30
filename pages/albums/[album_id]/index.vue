@@ -134,8 +134,6 @@ const deleteAlbum = () => {
 };
 
 const deletePicture = (picture_id: string) => {
-
-
   nextTick(async () => {
     const { data, pending, error, refresh } = await useFetch(
       `${config.public.apiBase}/albums/${route.params.album_id}/pictures/delete/${picture_id}`,
@@ -169,36 +167,37 @@ onMounted(() => {
   <main class="mx-auto max-w-screen-xl items-center justify-between p-4">
     <div class="flex justify-between">
       <div class="flex p-4">
-        <button
-          type="button"
-          class="mr-3 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 md:mr-0"
-        >
-          <a href="#" @click.stop.prevent="navigateTo('/albums')">
-            <svg
-              class="h-6 w-6 text-gray-800 dark:text-white"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 14 10"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M13 5H1m0 0 4 4M1 5l4-4"
-              />
-            </svg>
-          </a>
-        </button>
+        <div class="">
+          <button
+            type="button"
+            class="mr-3 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 md:mr-0"
+          >
+            <a href="#" @click.stop.prevent="navigateTo('/albums')">
+              <svg
+                class="h-6 w-6 text-gray-800 dark:text-white"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 10"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 5H1m0 0 4 4M1 5l4-4"
+                />
+              </svg>
+            </a>
+          </button>
+        </div>
+
         <div class="m-4">
-          <h1>{{ album.name }}</h1>
-          <p>{{ album.description }}</p>
+          <h1 class="text-xl font-bold">{{ album.name }}</h1>
+          <p class="text-m font-medium">{{ album.description }}</p>
           <div class="flex">
             <div class="flex flex-col">
-              <label
-                class="mb-2 block text-sm font-medium text-gray-900"
-                for="user_avatar"
+              <label class="my-2 block text-sm text-gray-900" for="user_avatar"
                 >Upload file</label
               >
               <input
@@ -210,12 +209,14 @@ onMounted(() => {
               />
             </div>
             <div class="flex md:order-2">
-              <button
-                type="button"
-                class="mr-3 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:mr-0"
-              >
-                <a href="#" @click.stop.prevent="uploadPicture"> Simpan </a>
-              </button>
+              <div class="">
+                <button
+                  type="button"
+                  class="mr-3 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:mr-0"
+                >
+                  <a href="#" @click.stop.prevent="uploadPicture"> Simpan </a>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -237,13 +238,11 @@ onMounted(() => {
     </div>
 
     <div class="grid grid-cols-2 gap-4 md:grid-cols-5">
-      <div class="relative flex">
-        <img
-          class="h-auto max-w-full cursor-pointer rounded-lg"
-          :src="config.public.apiBase + '/' + album.imageUrl"
-          alt=""
-        />
-      </div>
+      <img
+        class="h-auto max-w-full rounded-lg object-cover"
+        :src="config.public.apiBase + '/' + album.imageUrl"
+        alt=""
+      />
 
       <div v-for="picture in pictures" class="relative flex">
         <button>
@@ -266,7 +265,7 @@ onMounted(() => {
           </a>
         </button>
         <img
-          class="h-auto max-w-full cursor-pointer rounded-lg"
+          class="h-auto max-w-full rounded-lg object-cover"
           :src="config.public.apiBase + '/' + picture.imageUrl"
           alt=""
         />
